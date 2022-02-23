@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import inventory from '../../data/inventory';
 import heart from './heart.svg'
+import './Products.css';
 
 export default function Products() {
   return (
