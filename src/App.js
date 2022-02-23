@@ -12,13 +12,11 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Navbar/>
-        <FloatingCart/>
-        <Route path="/" element={<Home/>} />
-        <Route path="/contact" element={<Contact/>} />
-        <Route path="/produits" element={<Products/>} />
-        <Route path="/produits/:id" element={ProductShowcase} />
-        <Route path="/shoppingcart" element={<ShoppingCart/>} />
+        <Route path="/" element={<><Navbar/><FloatingCart/><Home/></>} />
+        <Route path="/contact" element={<><Navbar/><FloatingCart/><Contact/></>} />
+        <Route path="/produits" element={<><Navbar/><FloatingCart/><Products/></>} />
+        <Route path="/produits/:id" element={<><Navbar/><FloatingCart/><ProductShowcase/></>} />
+        <Route path="/shoppingCart" element={<><Navbar/><FloatingCart/><ShoppingCart/></>} />
       </Routes>
     </Router>
   );
