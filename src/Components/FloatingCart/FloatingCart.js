@@ -19,7 +19,7 @@ export default function FloatingCart() {
         <p>Votre Panier</p>
         <div className='img-notif-container'>
           <img src={cartIcon} alt="îcone" /> 
-          <span className='notif'>0</span>
+          <span className='notif'>{totalItems}</span>
         </div>
       </div>
     </Link>
