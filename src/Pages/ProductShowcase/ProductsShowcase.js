@@ -8,7 +8,9 @@ export default function ProductsShowcase() {
   const { id } = useParams();
   const [nbMugs, setNbMugs] = useState(1)
 
-  const productClicked = inventory.findIndex(obj => obj.title.replace(/\s+/g, '').trim() === id)
+  const productClicked = inventory.findIndex(
+    (obj) => obj.title.replace(/\s+/g, '').trim() === id
+  );
 
   const updateMugs = (e) => {setNbMugs(Number(e.target.value))}
 
@@ -19,7 +21,7 @@ export default function ProductsShowcase() {
   const dispatch = useDispatch();
 
   const addToCart = e => {
-    e.preventDefaault()
+    e.preventDefault()
 
     const itemAdded = {
       ...inventory[productClicked],
@@ -43,9 +45,9 @@ export default function ProductsShowcase() {
   }
 
   useEffect(() => {
-    return () => {
-      clearTimeout(timerInfo)
-    } 
+      return () => {
+        clearTimeout(timerInfo)
+      }
   }, [])
 
   return (
@@ -65,7 +67,9 @@ export default function ProductsShowcase() {
             onChange={updateMugs} 
           />
           <button>Ajouter au panier</button>
-          <span className='adding-info'></span>
+          <span 
+            ref={addingInfo}
+            className='adding-info'></span>
         </form>
       </div>
     </div>
