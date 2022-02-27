@@ -10,7 +10,7 @@ export default function ProductsShowcase() {
 
   const productClicked = inventory.findIndex(obj => obj.title.replace(/\s+/g, '').trim() === id)
 
-  const updateMugs = e => {setNbMugs(Number(e.target.value))}
+  const updateMugs = (e) => {setNbMugs(Number(e.target.value))}
 
   const addingInfo = useRef();
   let timerInfo;

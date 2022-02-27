@@ -4,7 +4,31 @@ import { useSelector, useDispatch } from 'react-redux';
 
 export default function ShoppingCart() {
 
-  const storeState = useSelector(state => state)
+  const storeState = useSelector(state => state);
+
+  const dispatch = useDispatch();
+
+  const handleChange = (event, id) => {
+    const indexItem = storeState.cart.findIndex(obj => obj.id === id)
+
+    const objUpdated = {
+      ...storeState.cart[indexItem],
+      quantity: Number(event.target.value)
+    }
+
+    dispatch({
+      type: "UPDATEITEM",
+      payload: objUpdated
+    })
+  }
+
+  let totalPrice = 0;
+  if(storeState.cart.length !== 0){
+    for(const item of storeState.cart){
+      const itemPrice = item.price * item.quantity;
+      totalPrice += itemPrice
+    }
+  }
 
   return (
     <div className='global-container'>
@@ -22,6 +46,7 @@ export default function ShoppingCart() {
             <div className='bloc-input'>
               <label htmlFor='quantityInput'>Quantité</label>
               <input 
+                onChange={e => handleChange(e, item.id )}
                 id="quantityInput"
                 type="number"
                 value={item.quantity}
@@ -33,6 +58,8 @@ export default function ShoppingCart() {
 
         }
       </ul>
+      <p className='total-price'>Total : {`${totalPrice.toFixed(2)}`}</p>
+      <button className='btn-cart'>Procédez au paiement</button>
     </div>
   )
 }
